@@ -101,7 +101,21 @@ Run the following commant to install the apache on one VM - web
 
     ansible-playbook --ask-become-pass apache_install.yml
 
+## Example when using WHEN option
 
+---
+- hosts: web
+  become: true
+  tasks:
+
+  - name: install apache2 and php on ubuntu os
+    service:
+      name: 
+       - apache
+       - libapache2-mod-php
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
 
 
 
