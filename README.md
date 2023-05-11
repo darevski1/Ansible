@@ -70,6 +70,16 @@ ansible.cfg
     # The default user to use when connecting to remote hosts. If not specified, Ansible will use the current user
     remote_user = vagrant
 
+    ansible all -m ping
+
+Update to all vm
+
+    ansible all -m apt -a update_cache=true --become --ask-become-pass
+
+install modules
+
+    ansible all -m apt -a name=tree --become --ask-become-pass
+
 
 
 

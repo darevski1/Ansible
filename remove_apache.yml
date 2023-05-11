@@ -1,0 +1,17 @@
+---
+
+
+- name: Remove apache from every VM
+  hosts: all
+  become: true
+  tasks: 
+
+  - name: stop apache2
+    service: 
+      name: apache2
+      state: stopped
+
+  - name: Remove apache2
+    apt:
+      name: apache2
+      state: absent
