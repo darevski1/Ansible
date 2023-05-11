@@ -81,6 +81,25 @@ install modules
     ansible all -m apt -a name=tree --become --ask-become-pass
 
 
+## Create playbook for apache
+Create new file **apache_install.yml** an add the following content
+
+    ---
+
+    - hosts: web
+    become: true
+    tasks:
+
+    - name: install apache2 package
+        apt:
+        name: apache2
+    - name: install php
+        apt:
+        name: libapache2-mod-php
+
+Run the following commant to install the apache on one VM - web
+
+    ansible-playbook --ask-become-pass apache_install.yml
 
 
 
